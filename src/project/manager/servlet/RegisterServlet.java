@@ -1,7 +1,7 @@
-package project.usermanager.servlet;
+package project.manager.servlet;
 
-import project.usermanager.model.*;
-import project.usermanager.dao.*;
+import project.manager.model.*;
+import project.manager.dao.*;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import com.alibaba.fastjson.*;

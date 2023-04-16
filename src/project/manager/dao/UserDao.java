@@ -1,7 +1,7 @@
-package project.usermanager.dao;
+package project.manager.dao;
 
-import project.usermanager.*;
-import project.usermanager.model.*;
+import project.manager.*;
+import project.manager.model.*;
 import java.sql.*;
 
 public class UserDao

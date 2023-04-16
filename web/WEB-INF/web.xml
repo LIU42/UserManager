@@ -6,7 +6,7 @@
     
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>project.usermanager.servlet.LoginServlet</servlet-class>
+        <servlet-class>project.manager.servlet.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -15,7 +15,7 @@
     
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>project.usermanager.servlet.RegisterServlet</servlet-class>
+        <servlet-class>project.manager.servlet.RegisterServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
@@ -24,7 +24,7 @@
     
     <servlet>
         <servlet-name>UpdateServlet</servlet-name>
-        <servlet-class>project.usermanager.servlet.UpdateServlet</servlet-class>
+        <servlet-class>project.manager.servlet.UpdateServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UpdateServlet</servlet-name>

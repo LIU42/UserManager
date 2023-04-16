@@ -1,4 +1,4 @@
-package project.usermanager;
+package project.manager;
 
 import java.sql.*;
 
