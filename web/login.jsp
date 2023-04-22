@@ -13,7 +13,6 @@
         <script src="script/login.js"></script>
     </head>
     <body onload="mainWrapperFadeIn()">
-        <form id="welcome-form" class="hidden-item" action="welcome.jsp" method="post"></form>
         <div id="container">
             <div id="main-wrapper">
                 <div id="header">登录</div>

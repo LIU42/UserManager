@@ -1,6 +1,6 @@
 function jumpToLoginPage()
 {
-    $("#login-form").submit();
+    window.location.href = "login.jsp";
 }
 
 function registerResponseHandler(requestObject)
@@ -35,14 +35,14 @@ function doRegister()
     let submitButton = $("#submit-button");
     let errorInfoDiv = $("#error-info");
 
-    let userName = userNameInput.val();
-    let password = passwordInput.val();
+    let requestObject = new XMLHttpRequest();
+    let requestURL = "register?";
+
+    requestURL += "username=" + userNameInput.val() + "&";
+    requestURL += "password=" + passwordInput.val() + "&";
 
     submitButton.html("注册中...");
     errorInfoDiv.html("");
-
-    let requestObject = new XMLHttpRequest();
-    let url = "register?username=" + userName + "&password=" + password;
 
     requestObject.onload = function ()
     {
@@ -58,6 +58,6 @@ function doRegister()
         errorInfoDiv.html("请求超时！");
         submitButton.html("注册");
     }
-    requestObject.open("GET", url, true);
+    requestObject.open("GET", requestURL, true);
     requestObject.send();
 }

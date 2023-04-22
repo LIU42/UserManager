@@ -16,11 +16,3 @@ body, html
     padding: 0px;
     background-image: linear-gradient(to right, #91ECF2, #A6C1EE);
 }
-
-.hidden-item
-{
-    display: none;
-    position: absolute;
-    width: 0px;
-    height: 0px;
-}

@@ -1,7 +1,7 @@
 package project.manager.servlet;
 
 import project.manager.model.*;
-import project.manager.dao.*;
+import project.manager.service.*;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import com.alibaba.fastjson.*;
@@ -18,34 +18,14 @@ public class RegisterServlet extends HttpServlet
         String userName = request.getParameter("username");
         String password = request.getParameter("password");
 
-        User user = new User(userName, password);
-        UserDao userDao = new UserDao(user);
+        User user = new User();
+        user.setUserName(userName);
+        user.setPassword(password);
+
+        RegisterService registerService = new RegisterService(user);
         JSONObject responseJSON = new JSONObject();
 
-        try
-        {
-            if (!userDao.isUserNameValid())
-            {
-                responseJSON.put("statusCode", 10001);
-            }
-            else if (!userDao.isPasswordValid())
-            {
-                responseJSON.put("statusCode", 10002);
-            }
-            else if (userDao.isUserNameExist())
-            {
-                responseJSON.put("statusCode", 10003);
-            }
-            else
-            {
-                userDao.addNewUser();
-                responseJSON.put("statusCode", 10000);
-            }
-        }
-        catch (Exception exception)
-        {
-            responseJSON.put("statusCode", 10004);
-        }
+        responseJSON.put("statusCode", registerService.doRegister());
         response.getWriter().println(responseJSON);
     }
 

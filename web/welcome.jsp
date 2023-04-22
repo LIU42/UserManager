@@ -2,11 +2,12 @@
 <%@ page import="project.manager.model.*" %>
 
 <%
-    Object userObject = request.getSession().getAttribute("user");
+    Object userObject = request.getSession().getAttribute("User");
 
     if (userObject == null)
     {
         request.getRequestDispatcher("login.jsp").forward(request, response);
+        return;
     }
     User user = (User)userObject;
 %>

@@ -18,33 +18,37 @@ public class UserDao
         this.user = user;
     }
 
-    public boolean isUserNameValid()
+    public boolean isUserNameInvalid()
     {
         String userName = user.getUserName();
 
         if (userName.length() < USERNAME_MIN_LENGTH || userName.length() > USERNAME_MAX_LENGTH)
         {
-            return false;
+            return true;
         }
         if (Character.isDigit(userName.charAt(0)))
         {
-            return false;
+            return true;
         }
         for (int i = 0; i < userName.length(); i++)
         {
             if (!Character.isLetter(userName.charAt(i)) && !Character.isDigit(userName.charAt(i)))
             {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
-    public boolean isPasswordValid()
+    public boolean isPasswordInvalid()
     {
         String password = user.getPassword();
 
-        return password.length() >= PASSWORD_MIN_LENGTH && password.length() <= PASSWORD_MAX_LENGTH;
+        if (password.length() >= PASSWORD_MIN_LENGTH && password.length() <= PASSWORD_MAX_LENGTH)
+        {
+            return false;
+        }
+        return true;
     }
 
     public boolean isUserNameExist() throws SQLException, ClassNotFoundException
@@ -60,7 +64,7 @@ public class UserDao
         return resultSet.next();
     }
 
-    public boolean isUserInfoCorrect() throws SQLException, ClassNotFoundException
+    public boolean isUserInfoRight() throws SQLException, ClassNotFoundException
     {
         String querySQL = "SELECT name FROM user WHERE name = ? AND password = ?";
         String userName = user.getUserName();

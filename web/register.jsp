@@ -14,7 +14,6 @@
         <script src="script/register.js"></script>
     </head>
     <body onload="mainWrapperFadeIn()">
-        <form id="login-form" class="hidden-item" action="login.jsp" method="post"></form>
         <div id="container">
             <div id="main-wrapper">
                 <div id="header">注册</div>

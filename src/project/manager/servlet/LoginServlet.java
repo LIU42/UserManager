@@ -1,7 +1,7 @@
 package project.manager.servlet;
 
 import project.manager.model.*;
-import project.manager.dao.*;
+import project.manager.service.*;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import com.alibaba.fastjson.*;
@@ -18,25 +18,18 @@ public class LoginServlet extends HttpServlet
         String userName = request.getParameter("username");
         String password = request.getParameter("password");
 
-        User user = new User(userName, password);
-        UserDao userDao = new UserDao(user);
+        User user = new User();
+        user.setUserName(userName);
+        user.setPassword(password);
+
+        LoginService loginService = new LoginService(user);
         JSONObject responseJSON = new JSONObject();
 
-        try
+        responseJSON.put("statusCode", loginService.doLogin());
+
+        if (responseJSON.getInteger("statusCode") == 10000)
         {
-            if (userDao.isUserInfoCorrect())
-            {
-                request.getSession().setAttribute("user", user);
-                responseJSON.put("statusCode", 10000);
-            }
-            else
-            {
-                responseJSON.put("statusCode", 10001);
-            }
-        }
-        catch (Exception exception)
-        {
-            responseJSON.put("statusCode", 10002);
+            request.getSession().setAttribute("User", user);
         }
         response.getWriter().println(responseJSON);
     }

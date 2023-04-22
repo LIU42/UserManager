@@ -1,6 +1,6 @@
 function jumpToWelcomePage()
 {
-    $("#welcome-form").submit();
+    window.location.href = "welcome.jsp";
 }
 
 function loginResponseHandler(requestObject)
@@ -33,14 +33,14 @@ function doLogin()
     let submitButton = $("#submit-button");
     let errorInfoDiv = $("#error-info");
 
-    let userName = userNameInput.val();
-    let password = passwordInput.val();
+    let requestObject = new XMLHttpRequest();
+    let requestURL = "login?";
+
+    requestURL += "username=" + userNameInput.val() + "&";
+    requestURL += "password=" + passwordInput.val() + "&";
 
     submitButton.html("登录中...");
     errorInfoDiv.html("");
-
-    let requestObject = new XMLHttpRequest();
-    let url = "login?username=" + userName + "&password=" + password;
 
     requestObject.onload = function ()
     {
@@ -56,6 +56,6 @@ function doLogin()
         errorInfoDiv.html("请求超时！");
         submitButton.html("登录");
     }
-    requestObject.open("GET", url, true);
+    requestObject.open("GET", requestURL, true);
     requestObject.send();
 }
