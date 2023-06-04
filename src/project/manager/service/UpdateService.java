@@ -7,26 +7,26 @@ public class UpdateService
 {
     private UserDao currentUserDao;
     private UserDao updateUserDao;
-    private String newUserName;
-    private String newPassword;
+    private User currentUser;
+    private User updateUser;
 
     public UpdateService(User currentUser, User updateUser)
     {
         this.currentUserDao = new UserDao(currentUser);
         this.updateUserDao = new UserDao(updateUser);
-        this.newUserName = updateUser.getUserName();
-        this.newPassword = updateUser.getPassword();
+        this.currentUser = currentUser;
+        this.updateUser = updateUser;
     }
 
     public int updateUserName()
     {
         try
         {
-            if (newUserName == null)
+            if (updateUser.getUserName() == null)
             {
                 return 10001;
             }
-            if (updateUserDao.isUserNameInvalid())
+            if (updateUser.isUserNameInvalid())
             {
                 return 10002;
             }
@@ -34,7 +34,7 @@ public class UpdateService
             {
                 return 10003;
             }
-            currentUserDao.updateUserName(newUserName);
+            currentUserDao.updateUserName(updateUser.getUserName());
         }
         catch (Exception exception)
         {
@@ -47,15 +47,15 @@ public class UpdateService
     {
         try
         {
-            if (newPassword == null)
+            if (updateUser.getUserName() == null)
             {
                 return 10001;
             }
-            if (updateUserDao.isPasswordInvalid())
+            if (updateUser.isPasswordInvalid())
             {
                 return 10002;
             }
-            currentUserDao.updatePassword(newPassword);
+            currentUserDao.updatePassword(updateUser.getPassword());
         }
         catch (Exception exception)
         {

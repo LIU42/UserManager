@@ -6,49 +6,11 @@ import java.sql.*;
 
 public class UserDao
 {
-    private static final int USERNAME_MAX_LENGTH = 20;
-    private static final int USERNAME_MIN_LENGTH = 3;
-    private static final int PASSWORD_MAX_LENGTH = 15;
-    private static final int PASSWORD_MIN_LENGTH = 6;
-
     private User user;
 
     public UserDao(User user)
     {
         this.user = user;
-    }
-
-    public boolean isUserNameInvalid()
-    {
-        String userName = user.getUserName();
-
-        if (userName.length() < USERNAME_MIN_LENGTH || userName.length() > USERNAME_MAX_LENGTH)
-        {
-            return true;
-        }
-        if (Character.isDigit(userName.charAt(0)))
-        {
-            return true;
-        }
-        for (int i = 0; i < userName.length(); i++)
-        {
-            if (!Character.isLetter(userName.charAt(i)) && !Character.isDigit(userName.charAt(i)))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean isPasswordInvalid()
-    {
-        String password = user.getPassword();
-
-        if (password.length() >= PASSWORD_MIN_LENGTH && password.length() <= PASSWORD_MAX_LENGTH)
-        {
-            return false;
-        }
-        return true;
     }
 
     public boolean isUserNameExist() throws SQLException, ClassNotFoundException

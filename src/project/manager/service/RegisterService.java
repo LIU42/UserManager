@@ -6,21 +6,23 @@ import project.manager.model.*;
 public class RegisterService
 {
     private UserDao userDao;
+    private User user;
 
     public RegisterService(User user)
     {
         this.userDao = new UserDao(user);
+        this.user = user;
     }
 
     public int doRegister()
     {
         try
         {
-            if (userDao.isUserNameInvalid())
+            if (user.isUserNameInvalid())
             {
                 return 10001;
             }
-            if (userDao.isPasswordInvalid())
+            if (user.isPasswordInvalid())
             {
                 return 10002;
             }
