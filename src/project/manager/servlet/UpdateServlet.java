@@ -1,11 +1,13 @@
 package project.manager.servlet;
 
-import project.manager.model.*;
-import project.manager.service.*;
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import com.alibaba.fastjson.*;
-import java.io.*;
+import project.manager.model.User;
+import project.manager.service.UpdateService;
+import com.alibaba.fastjson2.JSONObject;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 public class UpdateServlet extends HttpServlet
 {
@@ -36,8 +38,8 @@ public class UpdateServlet extends HttpServlet
 
         switch (optionCodeString)
         {
-            case "0": responseJSON.put("statusCode", updateService.updateUserName()); break;
-            case "1": responseJSON.put("statusCode", updateService.updatePassword()); break;
+            case "0" -> responseJSON.put("statusCode", updateService.updateUserName());
+            case "1" -> responseJSON.put("statusCode", updateService.updatePassword());
         }
         response.getWriter().println(responseJSON);
     }

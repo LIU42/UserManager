@@ -1,8 +1,11 @@
 package project.manager.dao;
 
-import project.manager.*;
-import project.manager.model.*;
-import java.sql.*;
+import project.manager.DBConnector;
+import project.manager.model.User;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class UserDao
 {

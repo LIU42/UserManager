@@ -1,7 +1,7 @@
 package project.manager.service;
 
-import project.manager.dao.*;
-import project.manager.model.*;
+import project.manager.model.User;
+import project.manager.dao.UserDao;
 
 public class LoginService
 {

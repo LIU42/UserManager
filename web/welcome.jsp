@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="project.manager.model.*" %>
+<%@ page import="project.manager.model.User" %>
 
 <%
     Object userObject = request.getSession().getAttribute("User");
