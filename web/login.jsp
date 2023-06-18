@@ -21,7 +21,7 @@
                     <input id="password-input" class="input-frame" type="password" placeholder="请输入密码">
                     <button id="submit-button" onclick="doLogin()">登录</button>
                 </div>
-                <div id="error-info"></div>
+                <div id="error-info-wrapper"></div>
                 <div id="switch-link-wrapper">还未注册？
                     <a id="switch-link" href="register.jsp">注册新用户</a>
                 </div>

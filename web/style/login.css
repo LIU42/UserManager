@@ -86,7 +86,7 @@
     background-color: #7AA8BD;
 }
 
-#error-info
+#error-info-wrapper
 {
     position: absolute;
     top: 310px;

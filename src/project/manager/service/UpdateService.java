@@ -7,14 +7,12 @@ public class UpdateService
 {
     private UserDao currentUserDao;
     private UserDao updateUserDao;
-    private User currentUser;
     private User updateUser;
 
     public UpdateService(User currentUser, User updateUser)
     {
         this.currentUserDao = new UserDao(currentUser);
         this.updateUserDao = new UserDao(updateUser);
-        this.currentUser = currentUser;
         this.updateUser = updateUser;
     }
 

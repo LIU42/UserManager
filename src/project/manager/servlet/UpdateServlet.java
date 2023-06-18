@@ -17,10 +17,10 @@ public class UpdateServlet extends HttpServlet
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
 
-        Object currentUserObject = request.getSession().getAttribute("user");
-        String optionCodeString = request.getParameter("option");
+        String optionString = request.getParameter("option");
+        User currentUser = (User)request.getSession().getAttribute("user");
 
-        if (currentUserObject == null)
+        if (currentUser == null)
         {
             request.getRequestDispatcher("login.jsp").forward(request, response);
             return;
@@ -28,7 +28,6 @@ public class UpdateServlet extends HttpServlet
         String newUserName = request.getParameter("new-username");
         String newPassword = request.getParameter("new-password");
 
-        User currentUser = (User)currentUserObject;
         User updateUser = new User();
         updateUser.setUserName(newUserName);
         updateUser.setPassword(newPassword);
@@ -36,7 +35,7 @@ public class UpdateServlet extends HttpServlet
         UpdateService updateService = new UpdateService(currentUser, updateUser);
         JSONObject responseJSON = new JSONObject();
 
-        switch (optionCodeString)
+        switch (optionString)
         {
             case "0" -> responseJSON.put("statusCode", updateService.updateUserName());
             case "1" -> responseJSON.put("statusCode", updateService.updatePassword());
